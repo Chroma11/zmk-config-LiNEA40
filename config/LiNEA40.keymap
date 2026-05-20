@@ -57,7 +57,7 @@
         layers = <SCROLL>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,,,,,,,,,,,,
+            //スクロール方向を逆転,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>;
     };
 };
@@ -179,6 +179,8 @@
 &none  &none   &none   &none          &kp C_MUTE                           &none      &kp HOME  &kp PAGE_DOWN  &kp PG_UP     &kp END
 &to 5  &trans  &trans  &trans         &trans             &trans    &trans  &trans               &trans         &trans        &trans
             >;
+
+            sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
         };
 
         BLUETOOTH {
