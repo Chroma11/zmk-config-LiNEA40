@@ -9,11 +9,15 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define MOUSE 1
-#define MARK 2
-#define CURSOR 3
-#define FUNCTION 4
-#define SCROLL 5
-#define WIRELESS 6
+#define FUNC_NUM 2
+#define SYMBOL 3
+#define MISC 4
+#define BLUETOOTH 5
+//#define MARK 2
+//#define CURSOR 3
+//#define FUNCTION 4
+//#define SCROLL 5
+//#define WIRELESS 6
 
 //mouse cursol
 
