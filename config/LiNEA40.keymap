@@ -13,6 +13,7 @@
 #define SYMBOL 3
 #define MISC 4
 #define BLUETOOTH 5
+#define SCROLL 6
 //#define MARK 2
 //#define CURSOR 3
 //#define FUNCTION 4
