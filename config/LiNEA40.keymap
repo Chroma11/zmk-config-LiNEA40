@@ -9,16 +9,11 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define MOUSE 1
-#define FUNC_NUM 2
-#define SYMBOL 3
-#define MISC 4
-#define BLUETOOTH 5
-#define SCROLL 6
-//#define MARK 2
-//#define CURSOR 3
-//#define FUNCTION 4
-//#define SCROLL 5
-//#define WIRELESS 6
+#define MARK 2
+#define CURSOR 3
+#define FUNCTION 4
+#define SCROLL 5
+#define WIRELESS 6
 
 //mouse cursol
 
@@ -52,7 +47,7 @@
 
 &msc_input_listener {
     speed_up {
-        layers = <MISC>;
+        layers = <FUNCTION>;
         input-processors = <&zip_wheel_scaler 3 1>; //スクロールを3倍速にする
     };
 };
@@ -62,7 +57,7 @@
         layers = <SCROLL>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,,,,,,,,,,,,,
+            //スクロール方向を逆転
             <&zip_xy_to_scroll_mapper>;
     };
 };
@@ -71,29 +66,39 @@
     combos {
         compatible = "zmk,combos";
 
-        UpCombo {
-            bindings = <&kp UP_ARROW>;
-            key-positions = <6 7>;
-        };
-
-        DownCombo {
-            bindings = <&kp DOWN>;
-            key-positions = <16 17>;
-        };
-
-        EscCombo {
-            bindings = <&kp ESCAPE>;
-            key-positions = <1 2>;
-        };
-
-        TabCombo {
-            bindings = <&kp TAB>;
+        ZenkakuHankaku {
+            bindings = <&kp GRAVE>;
             key-positions = <11 12>;
         };
 
-        StdUnLock {
-            bindings = <&studio_unlock>;
-            key-positions = <5 40>;
+        DeleteKey {
+            bindings = <&kp DEL>;
+            key-positions = <7 8>;
+        };
+
+        InsertKey {
+            bindings = <&kp INS>;
+            key-positions = <6 7>;
+        };
+
+        CenterClick {
+            bindings = <&mkp MB3>;
+            key-positions = <17 16>;
+        };
+
+        RightClick {
+            bindings = <&mkp MB2>;
+            key-positions = <18 17>;
+        };
+
+        PrevClick {
+            bindings = <&mkp MB4>;
+            key-positions = <27 28>;
+        };
+
+        ClickNext {
+            bindings = <&mkp MB5>;
+            key-positions = <26 27>;
         };
     };
 
@@ -113,102 +118,34 @@
         };
     };
 
-    macros {
-        P1: P1 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp LS(T) &kp N &kp LS(A) &kp F>;
-            label = "P1";
-        };
-
-        P2: P2 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp LS(V) &kp R &kp N0 &kp N3>;
-            label = "P2";
-        };
-
-        P3: P3 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp EXCL>;
-            label = "P3";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&lt 4 Q           &kp W        &kp E               &kp R           &kp T                                   &kp Y      &kp U           &kp I               &kp O             &kp P
-&lt 3 A           &kp S        &kp D               &kp F           &kp G                                   &kp H      &kp J           &kp K               &kp L             &lt 2 MINUS
-&mt LEFT_SHIFT Z  &mt RCTRL X  &mt LEFT_ALT C      &mt LEFT_WIN V  &kp B                                   &kp N      &mt LEFT_WIN M  &mt LEFT_ALT COMMA  &mt RCTRL PERIOD  &mt LEFT_SHIFT SLASH
-&kp LEFT_WIN      &kp C_MENU   &lt 2 INT_MUHENKAN  &kp INS         &kp DELETE  &kp BACKSPACE    &kp SPACE  &kp ENTER                  &lt 3 INT_HENKAN    &kp LEFT_ARROW    &kp RIGHT
+&kp Q          &kp W         &kp E               &kp R    &kp T                                      &kp Y        &kp U  &kp I                &kp O          &kp P
+&kp A          &kp S         &kp D               &kp F    &kp G                                      &kp H        &kp J  &kp K                &kp L          &lt 5 MINUS
+&kp Z          &kp X         &kp C               &kp V    &kp B                                      &kp N        &kp M  &kp COMMA            &kp DOT        &mt RIGHT_SHIFT BACKSPACE
+&mt LCTRL ESC  &kp LEFT_WIN  &mt LEFT_ALT GRAVE  &kp INS  &lt 5 ENTER  &lt 2 TAB    &lt 2 BACKSPACE  &lt 4 SPACE         &lt 6 RIGHT_BRACKET  &kp BACKSLASH  &mt RIGHT_SHIFT SLASH
             >;
 
-            sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
         };
+
+        //1
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans                    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans            &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &mkp MB1  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans            &trans  &trans  &trans
             >;
         };
 
-        FUNC_NUM {
-            bindings = <
-&kp ESCAPE  &kp LC(NUMBER_1)  &kp F2  &kp F4   &kp F5                     &kp COLON              &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS
-&kp TAB     &none             &none   &kp F10  &kp F11                    &kp LEFT_PARENTHESIS   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp MINUS
-&trans      &trans            &trans  &trans   &trans                     &kp RIGHT_PARENTHESIS  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp ASTERISK
-&to 5       &trans            &trans  &trans   &trans   &trans    &trans  &kp LS(ENTER)                           &kp KP_NUMBER_0  &kp PERIOD       &kp SLASH
-            >;
-        };
+        //2
 
-        SYMBOL {
-            bindings = <
-&kp EXCLAMATION  &kp AT  &kp HASH        &kp DOLLAR      &kp PERCENT                          &kp CARET      &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp TAB          &none   &kp EQUAL       &kp EQUAL       &kp DOUBLE_QUOTES                    &kp PLUS       &kp COLON      &kp SEMI      &kp LEFT_BRACKET      &kp RIGHT_BRACKET
-&none            &none   &kp UNDERSCORE  &kp UNDERSCORE  &kp SQT                              &kp BACKSLASH  &kp PIPE       &kp QUESTION  &kp LESS_THAN         &kp GREATER_THAN
-&to 5            &trans  &trans          &trans          &trans             &trans    &trans  &kp ENTER                     &trans        &kp DOWN_ARROW        &kp UP_ARROW
-            >;
-        };
-
-        MISC {
-            bindings = <
-&none  &none   &none   &kp C_BRI_UP   &kp C_VOLUME_UP                      &kp LG(L)  &none     &P1            &P2           &P3
-&none  &none   &none   &kp C_BRI_DEC  &kp C_VOLUME_DOWN                    &none      &kp LEFT  &kp DOWN       &kp UP_ARROW  &kp RIGHT
-&none  &none   &none   &none          &kp C_MUTE                           &none      &kp HOME  &kp PAGE_DOWN  &kp PG_UP     &kp END
-&to 5  &trans  &trans  &trans         &trans             &trans    &trans  &trans               &trans         &trans        &trans
-            >;
-
-            sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
-        };
-
-        BLUETOOTH {
-            bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans        &trans        &trans        &trans        &trans                          &trans        &trans        &trans        &trans        &trans
-&trans        &trans        &trans        &trans        &trans                          &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans        &trans        &trans        &trans        &trans        &trans    &trans  &trans                      &trans        &trans        &bt BT_CLR_ALL
-            >;
-        };
-
-        layer_7_default {
-            bindings = <
-&kp Q          &kp W         &kp E               &kp R    &kp T                                      &kp Y        &kp U  &kp I                &kp O          &kp P
-&kp A          &kp S         &kp D               &kp F    &kp G                                      &kp H        &kp J  &kp K                &kp L          &lt 0 MINUS
-&kp Z          &kp X         &kp C               &kp V    &kp B                                      &kp N        &kp M  &kp COMMA            &kp DOT        &mt RIGHT_SHIFT BACKSPACE
-&mt LCTRL ESC  &kp LEFT_WIN  &mt LEFT_ALT GRAVE  &kp INS  &lt 0 ENTER  &lt 3 TAB    &lt 3 BACKSPACE  &lt 5 SPACE         &lt 0 RIGHT_BRACKET  &kp BACKSLASH  &mt RIGHT_SHIFT SLASH
-            >;
-
-            sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
-        };
-
-        layer_9_mark {
+        MARK {
             bindings = <
 &kp EXCLAMATION             &kp AT           &kp HASH         &kp DOLLAR     &kp PERCENT                      &kp CARET     &kp AMPERSAND  &kp ASTERISK           &kp LEFT_PARENTHESIS  &kp LBKT
 &kp SLASH                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp SEMICOLON  &kp SEMICOLON                    &kp C_MUTE    &kp LS(LBKT)   &kp RIGHT_BRACKET      &kp BACKSLASH         &kp EQUAL
@@ -219,7 +156,9 @@
             sensor-bindings = <&re_kp C_VOLUME_DOWN C_VOLUME_UP>;
         };
 
-        layer_10_cursor {
+        //3
+
+        CURSOR {
             bindings = <
 &trans    &kp LC(LG(LEFT_ARROW))  &kp UP_ARROW  &kp LC(LG(RIGHT_ARROW))  &trans                       &kp KP_MULTIPLY  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp KP_PLUS
 &trans    &kp LEFT_ARROW          &kp DOWN      &kp RIGHT_ARROW          &trans                       &kp KP_SLASH     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_MINUS
@@ -228,7 +167,9 @@
             >;
         };
 
-        layer_11_function {
+        //4
+
+        FUNCTION {
             bindings = <
 &kp F1  &kp F2  &kp F3  &kp F4   &kp F5                     &trans      &trans  &kp LA(PRINTSCREEN)  &trans  &kp LC(LA(DELETE))
 &kp F6  &kp F7  &kp F8  &kp F9   &kp F10                    &trans      &trans  &kp LS(LG(S))        &trans  &kp LC(LS(ESCAPE))
@@ -237,6 +178,32 @@
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
+        };
+
+        //5
+
+        SCROLL {
+            bindings = <
+&trans    &kp LC(LG(LEFT_ARROW))  &kp UP_ARROW  &kp LC(LG(RIGHT_ARROW))  &trans                    &kp KP_MULTIPLY  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp KP_PLUS
+&trans    &kp LEFT_ARROW          &kp DOWN      &kp RIGHT_ARROW          &trans                    &kp KP_SLASH     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_MINUS
+&kp HOME  &kp PAGE_DOWN           &kp END       &kp PAGE_UP              &trans                    &kp UNDER        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp ENTER
+&trans    &trans                  &trans        &trans                   &trans  &trans    &trans  &kp NUMBER_0                   &kp NUMBER_0  &kp DOT       &kp QUESTION
+            >;
+
+            sensor-bindings = <&inc_dec_kp DOWN_ARROW UP_ARROW>;
+        };
+
+        //6
+
+        WIRELESS {
+            bindings = <
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                         &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans        &trans        &trans        &trans        &trans                               &trans          &trans        &trans        &trans        &trans
+&trans        &trans        &trans        &trans        &trans                               &trans          &trans        &trans        &trans        &bt BT_CLR
+&trans        &trans        &trans        &trans        &trans        &trans    &bootloader  &studio_unlock                &trans        &trans        &bt BT_CLR_ALL
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT_ARROW LEFT_ARROW>;
         };
     };
 };
