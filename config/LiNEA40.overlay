@@ -1,2 +1,16 @@
 #include <input/processors.dtsi>
 
+&trackball_listener {
+    status = "okay";
+    device = <&trackball>;
+    input-processors = <&zip_temp_layer 1 10000>;
+};
+
+&zip_temp_layer {
+    excluded-positions = <
+        16 // J
+        17 // K
+        18 // l
+        35 // 左キーボード右下キー
+    >;
+};
