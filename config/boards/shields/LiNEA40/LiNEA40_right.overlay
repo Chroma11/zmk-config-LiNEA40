@@ -19,9 +19,10 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-//        input-processors = <&zip_temp_layer 1 10000>;    // 追記
+        input-processors = <&zip_temp_layer 1 10000>;    // 追記
     };
 };
+
 
 &pinctrl {
     spi0_default: spi0_default {
