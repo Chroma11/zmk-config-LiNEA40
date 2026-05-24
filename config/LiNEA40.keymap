@@ -67,9 +67,9 @@
         layers = <5>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,
+            //スクロール方向を逆転,,,,
             <&zip_xy_to_scroll_mapper>,
-            // 2. スクローラーの設定の末尾にカンマで繋げて追加,,,
+            // 2. スクローラーの設定の末尾にカンマで繋げて追加,,,,
             <&scroll_runtime_input_processor>;
     };
 };
@@ -101,46 +101,67 @@
     };
 
     macros {
-        PM1: new_macro {
+        MP1: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp H &kp O &kp S &kp H &kp I &kp N2 &kp N5>;
             label = "NEW_MACRO";
         };
 
-        PM2: PM2 {
+        MP2: PM2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp M &kp B &kp A>;
             label = "PM2";
         };
 
-        PM3: PM3 {
+        MP3: PM3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(M) &kp N3>;
             label = "PM3";
         };
 
-        PW1: PW1 {
+        WP1: PW1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(T) &kp N &kp LS(A) &kp F>;
             label = "PW1";
         };
 
-        PW2: PW2 {
+        WP2: PW2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(V) &kp R>;
             label = "PW2";
         };
 
-        PW3: PW3 {
+        WP3: PW3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp N0 &kp N3 &kp EXCL>;
             label = "PW3";
+        };
+
+        ToMac: ToMac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 0 &to 0>;
+            label = "TOMAC";
+        };
+
+        ToWin: ToWin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 1 &to 7>;
+            label = "TOWIN";
+        };
+
+        ToTablet: ToTablet {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 2 &to 9>;
+            label = "TOTABLET";
         };
     };
 
@@ -199,7 +220,7 @@
 
         MediaNavi {
             bindings = <
-&trans  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp F20  &kp C_VOLUME_UP                      &kp LC(LG(Q))  &trans    &trans         &trans       &trans
+&trans  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp F20  &kp C_VOLUME_UP                      &kp LC(LG(Q))  &trans    &MP1           &MP2         &MP3
 &trans  &trans                &trans                &kp F21  &kp C_VOLUME_DOWN                    &trans         &kp LEFT  &kp DOWN       &kp UP       &kp RIGHT
 &trans  &trans                &trans                &trans   &trans                               &trans         &kp HOME  &kp PAGE_DOWN  &kp PAGE_UP  &kp LC(LA(END))
 &trans  &trans                &trans                &trans   &trans             &trans    &trans  &trans                   &trans         &trans       &trans
@@ -230,6 +251,39 @@
             >;
 
             sensor-bindings = <&inc_dec_kp RIGHT_ARROW LEFT_ARROW>;
+        };
+
+        default_Win {
+            bindings = <
+&lt 8 Q       &kp W        &kp E        &kp R        &kp T                                      &kp Y      &kp U        &kp I           &kp O          &lt 6 P
+&lt 3 A       &kp S        &kp D        &kp F        &kp G                                      &kp H      &kp J        &kp K           &kp L          &lt 2 MINUS
+&mt LSHFT Z   &mt LCTRL X  &mt LALT C   &mt LCTRL V  &kp B                                      &kp N      &mt LCTRL M  &mt LALT COMMA  &mt LCTRL DOT  &mt RSHFT SLASH
+&kp LEFT_WIN  &kp K_MENU   &lt 2 LANG2  &trans       &lt 5 DEL  &lt 2 BACKSPACE    &lt 2 ENTER  &kp ENTER               &lt 3 LANG1     &kp LEFT       &kp RIGHT
+            >;
+
+            sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
+        };
+
+        MediaNavi_Win {
+            bindings = <
+&trans  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp F20  &kp C_VOLUME_UP                      &kp LG(L)  &kp LC(LA(DEL))  &WP1           &WP2         &WP3
+&trans  &trans                &trans                &kp F21  &kp C_VOLUME_DOWN                    &trans     &kp LEFT         &kp DOWN       &kp UP       &kp RIGHT
+&trans  &trans                &trans                &trans   &trans                               &trans     &kp HOME         &kp PAGE_DOWN  &kp PAGE_UP  &kp LC(LA(END))
+&trans  &trans                &trans                &trans   &trans             &trans    &trans  &trans                      &trans         &trans       &trans
+            >;
+
+            sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
+        };
+
+        default_Tablet {
+            bindings = <
+&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt 6 P
+&lt 3 A       &kp S        &kp D        &kp F       &kp G                                      &kp H      &kp J       &kp K            &kp L         &lt 2 MINUS
+&mt LSHFT Z   &mt LCTRL X  &mt LALT C   &mt LGUI V  &kp B                                      &kp N      &mt RALT M  &mt RCTRL COMMA  &mt RGUI DOT  &mt RSHFT SLASH
+&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &lt 2 ENTER  &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
+            >;
+
+            sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
         };
     };
 };
