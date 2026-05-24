@@ -12,7 +12,7 @@
 #define MOUSE 1
 #define FUNCNUM 2
 #define SYMBOLS 3
-#define MEDIANAVE 4
+#define MEDIANAVI 4
 // #define MARK 2
 // #define CURSOR 3
 // #define FUNCTION 4
