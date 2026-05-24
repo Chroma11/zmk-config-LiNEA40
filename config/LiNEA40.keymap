@@ -59,13 +59,8 @@
 };
 
 &trackball_listener {
-    // 1. トラックボールのリスナー直下にマウス用のプロセッサを追加
-
-    input-processors = <&mouse_runtime_input_processor>;
     scroller {
-        input-processors =
-            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            <&zip_wheel_scaler 1 2>;
+        input-processors = <&zip_xy_to_scroll>;
     };
 };
 
