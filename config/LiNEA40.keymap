@@ -67,9 +67,9 @@
         layers = <5>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,
+            //スクロール方向を逆転,,,
             <&zip_xy_to_scroll_mapper>,
-            // 2. スクローラーの設定の末尾にカンマで繋げて追加,,
+            // 2. スクローラーの設定の末尾にカンマで繋げて追加,,,
             <&scroll_runtime_input_processor>;
     };
 };
@@ -97,6 +97,50 @@
             bindings = <&msc>, <&msc>;
 
             tap-ms = <20>;
+        };
+    };
+
+    macros {
+        PM1: new_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp H &kp O &kp S &kp H &kp I &kp N2 &kp N5>;
+            label = "NEW_MACRO";
+        };
+
+        PM2: PM2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp M &kp B &kp A>;
+            label = "PM2";
+        };
+
+        PM3: PM3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(M) &kp N3>;
+            label = "PM3";
+        };
+
+        PW1: PW1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(T) &kp N &kp LS(A) &kp F>;
+            label = "PW1";
+        };
+
+        PW2: PW2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(V) &kp R>;
+            label = "PW2";
+        };
+
+        PW3: PW3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N0 &kp N3 &kp EXCL>;
+            label = "PW3";
         };
     };
 
