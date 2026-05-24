@@ -23,11 +23,6 @@
     };
 };
 
-&mouse_runtime_input_processor {
-    // オートマウス起動中のレイヤー1（MOUSE）にいる時だけは、スクロールではなく通常のカーソル移動にする
-    ignored-layers = <1>; 
-};
-
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
