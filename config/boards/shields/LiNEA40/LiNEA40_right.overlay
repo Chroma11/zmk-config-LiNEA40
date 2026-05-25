@@ -19,8 +19,8 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        /* オートマウス（10秒間レイヤー1を維持）を設定 */
-        input-processors = <&zip_temp_layer 1 10000>;
+        /* 信号をまず感度変更プロセッサへと流します */
+        input-processors = <&mouse_runtime_input_processor>;
     };
 };
 
