@@ -23,11 +23,11 @@
         input-processors = <&zip_temp_layer 1 10000>;
     };
 
-    /* 【ここがポイント】ルートノード（ / ）の中に直接プロセッサを上書き定義することで、
-       読み込み順のエラーを回避しつつ、右手側だけで安全にレイヤー1（MOUSE）を除外します */
-    mouse_runtime_input_processor {
-        ignored-layers = <1>;
-    };
+};  /* ここでルートノード（/）を一度完全に閉じます */
+
+/* すでに存在する定義に対して、右手側だけの追加設定を安全に合流させます */
+&mouse_runtime_input_processor {
+    ignored-layers = <1>;
 };
 
 &pinctrl {
