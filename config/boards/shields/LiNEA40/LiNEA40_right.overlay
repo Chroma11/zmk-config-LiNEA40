@@ -18,11 +18,16 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-
-        /* 信号をまず感度変更プロセッサへと流します */
-        input-processors = <&mouse_runtime_input_processor>;
+        /* ここは空っぽにします */
     };
 };
+
+/* このブロックは削除またはコメントアウトします */
+/*
+&mouse_runtime_input_processor {
+    ignored-layers = <1>;
+};
+*/
 
 &pinctrl {
     spi0_default: spi0_default {
