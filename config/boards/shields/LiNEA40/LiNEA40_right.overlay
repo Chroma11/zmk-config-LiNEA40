@@ -19,19 +19,9 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        /* 1. トラックボールを動かしたときに、自動で10秒間レイヤー1（MOUSE）を有効化します */
+        /* オートマウス（10秒間レイヤー1を維持）の設定だけを残します */
         input-processors = <&zip_temp_layer 1 10000>;
     };
-};
-
-/* 2. キーマップ側で定義されている「レイヤー2に入ったときに感度を下げる」仕組みに、
-      トラックボールの信号が流れるように紐付けを拡張します。
-*/
-&mouse_runtime_input_processor {
-    /* オートマウスで自動移行したレイヤー1（MOUSE）にいる間は、
-       感度ダウン（1/2）の処理が重複して二重に遅くならないよう「除外（ignore）」します。
-    */
-    ignored-layers = <1>;
 };
 
 &pinctrl {
