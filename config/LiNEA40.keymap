@@ -309,15 +309,20 @@
 };
 
 #if defined(SHIELD_LINEA40_RIGHT)
-/* 1. レイヤー2,3,4の時は感度を1/2にします（作者の設定通り） */
+/* 1. レイヤー2,3,4の時は、感度を1/2にします（作者のオリジナル設定） */
 &mouse_runtime_input_processor {
     ignored-layers = <1>;
 };
 
-/* 2. 【ここが重要】レイヤー2(FUNCNUM)にいる間は、トラックボールが動いても
-      オートマウス（レイヤー1への強制移行）を完全に「無視」させます。
-      これにより、打鍵時の振動による誤判定や、長押し中のレイヤー剥ぎ取りを防ぎます */
+/* 2. トラックボールのオートマウス（レイヤー1移行）が発動する条件を
+      「ベースレイヤー（0）またはマウスレイヤー（1）にいる時だけ」に限定します。
+      これにより、手動でレイヤー2(FUNCNUM)に入っている間はオートマウスが発動しなくなります。 */
+&msc_input_listener {
+    input-processors = <&zip_temp_layer 1 10000>;
+};
+
 &zip_temp_layer {
-    ignored-layers = <2>;
+    /delete-property/ ignored-layers; // 先ほどの間違った設定を完全に消去します
+    applicable-layers = <0 1>;        // レイヤー0と1の時だけオートマウスを有効にします
 };
 #endif
