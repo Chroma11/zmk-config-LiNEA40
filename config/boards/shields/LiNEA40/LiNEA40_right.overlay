@@ -1,4 +1,4 @@
-#include "LiNEA40.dtsi"
+ｊ#include "LiNEA40.dtsi"
 #include <input/processors.dtsi>
 &default_transform {
     col-offset = <6>;
@@ -76,7 +76,7 @@
         16 // J
         17 // K
         18 // l
-        34
-        35
+        // 34 // 左手親指左側
+        35 // 左手親指右側
     >;
 };
