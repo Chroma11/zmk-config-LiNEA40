@@ -74,13 +74,6 @@
     };
 };
 
-/* ファイルの最下段に追記 */
-&mouse_runtime_input_processor {
-    /* オートマウスで自動移行したレイヤー1（MOUSE）にいる間は、
-       感度ダウン（1/2）の処理を重複させないため「除外（ignore）」します。 */
-    ignored-layers = <1>;
-};
-
 / {
     combos {
         compatible = "zmk,combos";
