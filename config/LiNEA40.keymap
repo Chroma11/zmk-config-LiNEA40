@@ -307,3 +307,10 @@
         };
     };
 };
+
+/* ファイルの最下段に追記 */
+#if defined(SHIELD_LINEA40_RIGHT)
+&mouse_runtime_input_processor {
+    ignored-layers = <1>;
+};
+#endif
