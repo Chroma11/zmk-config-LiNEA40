@@ -309,20 +309,14 @@
 };
 
 #if defined(SHIELD_LINEA40_RIGHT)
-/* 1. レイヤー2,3,4の時は、感度を1/2にします（作者のオリジナル設定） */
+/* 感度変更プロセッサの処理が終わった「後」に、オートマウスを安全に結合します */
 &mouse_runtime_input_processor {
-    ignored-layers = <1>;
-};
+    /* レイヤー2,3,4の時は感度を1/2にします（作者の設定） */
+    layers = <2 3 4>;
+    input-processors = <&zip_xy_scaler 1 2>;
 
-/* 2. トラックボールのオートマウス（レイヤー1移行）が発動する条件を
-      「ベースレイヤー（0）またはマウスレイヤー（1）にいる時だけ」に限定します。
-      これにより、手動でレイヤー2(FUNCNUM)に入っている間はオートマウスが発動しなくなります。 */
-&msc_input_listener {
-    input-processors = <&zip_temp_layer 1 10000>;
-};
-
-&zip_temp_layer {
-    /delete-property/ ignored-layers; // 先ほどの間違った設定を完全に消去します
-    applicable-layers = <0 1>;        // レイヤー0と1の時だけオートマウスを有効にします
+    /* 感度判定の後にオートマウス（10秒）を実行することで、
+       手動レイヤー（長押し）との競合・フリーズを完全に回避します */
+    config-processors = <&zip_temp_layer 1 10000>;
 };
 #endif
