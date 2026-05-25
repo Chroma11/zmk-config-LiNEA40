@@ -22,12 +22,6 @@
         /* オートマウス（10秒間レイヤー1を維持）を設定 */
         input-processors = <&zip_temp_layer 1 10000>;
     };
-
-};  /* ここでルートノード（/）を一度完全に閉じます */
-
-/* すでに存在する定義に対して、右手側だけの追加設定を安全に合流させます */
-&mouse_runtime_input_processor {
-    ignored-layers = <1>;
 };
 
 &pinctrl {
