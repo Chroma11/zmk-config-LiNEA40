@@ -19,8 +19,14 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        /* オートマウス（10秒間レイヤー1を維持）の設定だけを残します */
+        /* オートマウス（10秒間レイヤー1を維持）を設定 */
         input-processors = <&zip_temp_layer 1 10000>;
+    };
+
+    /* 【ここがポイント】ルートノード（ / ）の中に直接プロセッサを上書き定義することで、
+       読み込み順のエラーを回避しつつ、右手側だけで安全にレイヤー1（MOUSE）を除外します */
+    mouse_runtime_input_processor {
+        ignored-layers = <1>;
     };
 };
 
