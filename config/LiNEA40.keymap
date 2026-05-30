@@ -307,16 +307,3 @@
         };
     };
 };
-
-#if defined(SHIELD_LINEA40_RIGHT)
-/* 感度変更プロセッサの処理が終わった「後」に、オートマウスを安全に結合します */
-&mouse_runtime_input_processor {
-    /* レイヤー2,3,4の時は感度を1/2にします（作者の設定） */
-    layers = <2 3 4>;
-    input-processors = <&zip_xy_scaler 1 2>;
-
-    /* 感度判定の後にオートマウス（10秒）を実行することで、
-       手動レイヤー（長押し）との競合・フリーズを完全に回避します */
-    config-processors = <&zip_temp_layer 1 10000>;
-};
-#endif
