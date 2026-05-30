@@ -18,16 +18,9 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        /* ここは空っぽにします */
+
     };
 };
-
-/* このブロックは削除またはコメントアウトします */
-/*
-&mouse_runtime_input_processor {
-    ignored-layers = <1>;
-};
-*/
 
 &pinctrl {
     spi0_default: spi0_default {
