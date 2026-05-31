@@ -246,6 +246,8 @@
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
+        };
+
         //10
 
         WIRELESS {
@@ -257,7 +259,6 @@
             >;
 
             sensor-bindings = <&inc_dec_kp RIGHT_ARROW LEFT_ARROW>;
-        };
         };
     };
 };
