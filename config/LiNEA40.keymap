@@ -81,11 +81,6 @@
     combos {
         compatible = "zmk,combos";
 
-        test {
-            bindings = <&none>;
-            key-positions = <0 4 5 9 10 14 15 19 20 24 25 29 30 35 36 40>;
-        };
-
         ArrowUp {
             bindings = <&kp UP_ARROW>;
             key-positions = <6 7>;
@@ -124,47 +119,6 @@
     };
 
     macros {
-        MP1: new_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp H &kp O &kp S &kp H &kp I &kp N2 &kp N5>;
-            label = "NEW_MACRO";
-        };
-
-        MP2: PM2 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp M &kp B &kp A>;
-            label = "PM2";
-        };
-
-        MP3: PM3 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(M) &kp N3>;
-            label = "PM3";
-        };
-
-        WP1: PW1 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(T) &kp N &kp LS(A) &kp F>;
-            label = "PW1";
-        };
-
-        WP2: PW2 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(V) &kp R>;
-            label = "PW2";
-        };
-
-        WP3: PW3 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp N0 &kp N3 &kp EXCL>;
-            label = "PW3";
-        };
 
         ToMac: ToMac {
             compatible = "zmk,behavior-macro";
