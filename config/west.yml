@@ -13,17 +13,8 @@ manifest:
       remote: cormoran
       revision: v0.3-branch+dya
       import: app/west.yml
-    - name: zmk-module-ble-management
-      remote: cormoran
-      revision: main
-    - name: zmk-module-battery-history
-      remote: cormoran
-      revision: main
-    - name: zmk-module-settings-rpc
-      remote: cormoran
-      revision: main
-    # zmk-module-runtime-input-processor を削除
-    # → v0.3-branch+dya と main ブランチの API 非互換によるビルドエラーを回避
+    # DYA Studio モジュールはすべて main ブランチで v0.3-branch+dya と API 非互換のため除外
+    # 将来 cormoran 氏が互換バージョンを tag 付きでリリースしたら復活させる
     - name: zmk-pmw3610-driver
       remote: inorichi
       revision: main
