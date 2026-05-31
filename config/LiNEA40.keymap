@@ -124,21 +124,24 @@
         ToMac: ToMac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 0 &to 0>;
+            wait-ms = <500>;
+            bindings = <&bt BT_SEL 0 &macro_wait_time 500 &df 0>;
             label = "TOMAC";
         };
 
         ToWin: ToWin {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 1 &to 6>;
+            wait-ms = <500>;
+            bindings = <&bt BT_SEL 1 &macro_wait_time 500 &df 6>;
             label = "TOWIN";
         };
 
         ToTablet: ToTablet {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 2 &to 8>;
+            wait-ms = <500>;
+            bindings = <&bt BT_SEL 2 &macro_wait_time 500 &df 8>;
             label = "TOTABLET";
         };
     };
