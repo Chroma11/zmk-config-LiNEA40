@@ -153,7 +153,7 @@
 &lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt_hp 9 P
 &lt 3 A       &kp S        &kp D        &lt 1 F     &kp G                                      &kp H      &kp J       &kp K            &kp L         &lt 2 MINUS
 &hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LGUI V  &kp B                                      &kp N      &hm RALT M  &hm RCTRL COMMA  &hm RGUI DOT  &hm RSHFT SLASH
-&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &lt 2 ENTER  &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
+&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &kp SPACE    &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
@@ -223,9 +223,9 @@
         DEFAULT_WIN {
             bindings = <
 &lt 7 Q       &kp W        &kp E        &kp R        &kp T                                      &kp Y      &kp U        &kp I           &kp O          &lt_hp 9 P
-&lt 3 A       &kp S        &kp D        &kp F        &kp G                                      &kp H      &kp J        &kp K           &kp L          &lt 2 MINUS
+&lt 3 A       &kp S        &kp D        &lt 1 F      &kp G                                      &kp H      &kp J        &kp K           &kp L          &lt 2 MINUS
 &hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LCTRL V  &kp B                                      &kp N      &hm LCTRL M  &hm LALT COMMA  &hm LCTRL DOT  &hm RSHFT SLASH
-&kp LEFT_WIN  &kp K_MENU   &lt 2 LANG2  &trans       &lt 5 DEL  &lt 2 BACKSPACE    &lt 2 ENTER  &kp ENTER               &lt 3 LANG1     &kp LEFT       &kp RIGHT
+&kp LEFT_WIN  &kp K_MENU   &lt 2 LANG2  &trans       &lt 5 DEL  &lt 2 BACKSPACE    &kp SPACE    &kp ENTER               &lt 3 LANG1     &kp LEFT       &kp RIGHT
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
@@ -251,7 +251,7 @@
 &lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt_hp 9 P
 &lt 3 A       &kp S        &kp D        &kp F       &kp G                                      &kp H      &kp J       &kp K            &kp L         &lt 2 MINUS
 &hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LGUI V  &kp B                                      &kp N      &hm RALT M  &hm RCTRL COMMA  &hm RGUI DOT  &hm RSHFT SLASH
-&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &lt 2 ENTER  &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
+&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &kp SPACE    &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
@@ -261,7 +261,7 @@
 
         WIRELESS {
             bindings = <
-&ToMac        &ToWin        &ToTablet     &trans        &trans                               &ToMac        &ToWin        &ToTablet     &trans        &trans
+&kp GRAVE     &kp GRAVE     &kp GRAVE     &kp GRAVE     &kp GRAVE                            &kp GRAVE     &kp GRAVE     &kp GRAVE     &kp GRAVE     &kp GRAVE
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
 &trans        &trans        &trans        &trans        &trans                               &trans        &trans        &trans        &trans        &bt BT_CLR
 &trans        &trans        &trans        &trans        &trans        &trans    &bootloader  &studio_unlock              &trans        &trans        &bt BT_CLR_ALL
