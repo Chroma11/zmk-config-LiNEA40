@@ -125,7 +125,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <500>;
-            bindings = <&bt BT_SEL 0 &macro_wait_time 500 &df 0>;
+            bindings = <&bt BT_SEL 0 &macro_wait_time 500 &to 0>;
             label = "TOMAC";
         };
 
@@ -133,7 +133,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <500>;
-            bindings = <&bt BT_SEL 1 &macro_wait_time 500 &df 6>;
+            bindings = <&bt BT_SEL 1 &macro_wait_time 500 &to 6>;
             label = "TOWIN";
         };
 
@@ -141,7 +141,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <500>;
-            bindings = <&bt BT_SEL 2 &macro_wait_time 500 &df 8>;
+            bindings = <&bt BT_SEL 2 &macro_wait_time 500 &to 8>;
             label = "TOTABLET";
         };
     };
