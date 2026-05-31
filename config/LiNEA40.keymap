@@ -13,7 +13,7 @@
 #define SYMBOLS 3
 #define MEDIANAVI 4
 #define SCROLL 5
-#define WIRELESS 10
+#define WIRELESS 9
 
 //mouse cursol
 
@@ -141,7 +141,7 @@
 
         default_layer {
             bindings = <
-&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt 10 P
+&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt 9 P
 &lt 3 A       &kp S        &kp D        &lt 1 F     &kp G                                      &kp H      &kp J       &kp K            &kp L         &lt 2 MINUS
 &hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LGUI V  &kp B                                      &kp N      &hm RALT M  &hm RCTRL COMMA  &hm RGUI DOT  &hm RSHFT SLASH
 &kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &lt 2 ENTER  &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
@@ -213,7 +213,7 @@
 
         DEFAULT_WIN {
             bindings = <
-&lt 7 Q       &kp W        &kp E        &kp R        &kp T                                      &kp Y      &kp U        &kp I           &kp O          &lt 10 P
+&lt 7 Q       &kp W        &kp E        &kp R        &kp T                                      &kp Y      &kp U        &kp I           &kp O          &lt 9 P
 &lt 3 A       &kp S        &kp D        &kp F        &kp G                                      &kp H      &kp J        &kp K           &kp L          &lt 2 MINUS
 &hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LCTRL V  &kp B                                      &kp N      &hm LCTRL M  &hm LALT COMMA  &hm LCTRL DOT  &hm RSHFT SLASH
 &kp LEFT_WIN  &kp K_MENU   &lt 2 LANG2  &trans       &lt 5 DEL  &lt 2 BACKSPACE    &lt 2 ENTER  &kp ENTER               &lt 3 LANG1     &kp LEFT       &kp RIGHT
@@ -239,7 +239,7 @@
 
         DEFAULT_TABLET {
             bindings = <
-&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt 10 P
+&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt 9 P
 &lt 3 A       &kp S        &kp D        &kp F       &kp G                                      &kp H      &kp J       &kp K            &kp L         &lt 2 MINUS
 &hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LGUI V  &kp B                                      &kp N      &hm RALT M  &hm RCTRL COMMA  &hm RGUI DOT  &hm RSHFT SLASH
 &kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &lt 2 ENTER  &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
@@ -248,7 +248,7 @@
             sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
         };
 
-        //10
+        //9
 
         WIRELESS {
             bindings = <
