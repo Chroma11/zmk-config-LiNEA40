@@ -55,8 +55,7 @@
 &trackball_listener {
     scroller {
         layers = <SCROLL>;
-        input-processors =
-            <&zip_xy_to_scroll_mapper>;
+        input-processors = <&zip_xy_to_scroll_mapper>;
     };
 };
 
@@ -89,6 +88,7 @@
         // ホームロウモッド用カスタムhold-tap
         // require-prior-idle-ms が最重要：直前150ms以内にキー入力があればホールド判定しない
         // Pキー用：ホールド優先のレイヤータップ（500ms長押しでWIRELESSレイヤー）
+
         lt_hp: lt_hold_preferred {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -117,15 +117,23 @@
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
+
             tap-ms = <20>;
         };
 
         // ── マクロ：BT接続切替 ────────────────────────────────
+
         ToMac: ToMac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <500>;
-            bindings = <&to 0 &macro_wait_time 100 &bt BT_SEL 0 &macro_wait_time 500 &to 0>;
+            bindings =
+                <&to 0>,
+                <&macro_wait_time 100>,
+                <&bt BT_SEL 0>,
+                <&macro_wait_time 500>,
+                <&to 0>;
+
             label = "TOMAC";
         };
 
@@ -133,7 +141,13 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <500>;
-            bindings = <&to 0 &macro_wait_time 100 &bt BT_SEL 1 &macro_wait_time 500 &to 6>;
+            bindings =
+                <&to 0>,
+                <&macro_wait_time 100>,
+                <&bt BT_SEL 1>,
+                <&macro_wait_time 500>,
+                <&to 6>;
+
             label = "TOWIN";
         };
 
@@ -141,9 +155,18 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <500>;
-            bindings = <&to 0 &macro_wait_time 100 &bt BT_SEL 2 &macro_wait_time 500 &to 8>;
+            bindings =
+                <&to 0>,
+                <&macro_wait_time 100>,
+                <&bt BT_SEL 2>,
+                <&macro_wait_time 500>,
+                <&to 8>;
+
             label = "TOTABLET";
         };
+    };
+
+    macros {
     };
 
     keymap {
@@ -153,10 +176,10 @@
 
         default_layer {
             bindings = <
-&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt_hp 9 P
-&lt 3 A       &kp S        &kp D        &lt 1 F     &kp G                                      &kp H      &kp J       &kp K            &kp L         &lt 2 MINUS
-&hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LGUI V  &kp B                                      &kp N      &hm RGUI M  &hm RALT COMMA   &hm RCTRL DOT  &hm RSHFT SLASH
-&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &kp SPACE    &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
+&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                  &kp Y      &kp U       &kp I           &kp O          &lt_hp 9 P
+&lt 3 A       &kp S        &kp D        &lt 1 F     &kp G                                  &kp H      &kp J       &kp K           &kp L          &lt 2 MINUS
+&hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LGUI V  &kp B                                  &kp N      &hm RGUI M  &hm RALT COMMA  &hm RCTRL DOT  &hm RSHFT SLASH
+&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 2 DEL  &kp BACKSPACE    &kp SPACE  &kp ENTER              &lt 3 LANG1     &kp LEFT       &kp RIGHT
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
@@ -201,7 +224,7 @@
 
         MEDIANAVI {
             bindings = <
-&trans  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp F20  &kp C_VOLUME_UP                      &kp LC(LG(Q))  &trans    &trans            &trans         &trans
+&trans  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp F20  &kp C_VOLUME_UP                      &kp LC(LG(Q))  &trans    &trans         &trans       &trans
 &trans  &trans                &trans                &kp F21  &kp C_VOLUME_DOWN                    &trans         &kp LEFT  &kp DOWN       &kp UP       &kp RIGHT
 &trans  &trans                &trans                &trans   &trans                               &trans         &kp HOME  &kp PAGE_DOWN  &kp PAGE_UP  &kp LC(LA(END))
 &trans  &trans                &trans                &trans   &trans             &trans    &trans  &trans                   &trans         &trans       &trans
@@ -225,10 +248,10 @@
 
         DEFAULT_WIN {
             bindings = <
-&lt 7 Q       &kp W        &kp E        &kp R        &kp T                                      &kp Y      &kp U        &kp I           &kp O          &lt_hp 9 P
-&lt 3 A       &kp S        &kp D        &lt 10 F     &kp G                                      &kp H      &kp J        &kp K           &kp L          &lt 2 MINUS
-&hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LCTRL V  &kp B                                      &kp N      &hm LCTRL M  &hm LALT COMMA  &hm LCTRL DOT  &hm RSHFT SLASH
-&kp LEFT_WIN  &kp K_MENU   &lt 2 LANG2  &trans       &lt 5 DEL  &lt 2 BACKSPACE    &kp SPACE    &kp ENTER               &lt 3 LANG1     &kp LEFT       &kp RIGHT
+&lt 7 Q       &kp W        &kp E        &kp R        &kp T                                    &kp Y      &kp U        &kp I           &kp O          &lt_hp 9 P
+&lt 3 A       &kp S        &kp D        &lt 10 F     &kp G                                    &kp H      &kp J        &kp K           &kp L          &lt 2 MINUS
+&hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LCTRL V  &kp B                                    &kp N      &hm LCTRL M  &hm LALT COMMA  &hm LCTRL DOT  &hm RSHFT SLASH
+&kp LEFT_WIN  &kp K_MENU   &lt 2 LANG2  &trans       &lt 5 DEL  &lt 2 BACKSPACE    &kp SPACE  &kp ENTER               &lt 3 LANG1     &kp LEFT       &kp RIGHT
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
@@ -238,7 +261,7 @@
 
         MEDIANAVI_WIN {
             bindings = <
-&trans  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp F20  &kp C_VOLUME_UP                      &kp LG(L)  &kp LC(LA(DEL))  &trans           &trans         &trans
+&trans  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp F20  &kp C_VOLUME_UP                      &kp LG(L)  &kp LC(LA(DEL))  &trans         &trans       &trans
 &trans  &trans                &trans                &kp F21  &kp C_VOLUME_DOWN                    &trans     &kp LEFT         &kp DOWN       &kp UP       &kp RIGHT
 &trans  &trans                &trans                &trans   &trans                               &trans     &kp HOME         &kp PAGE_DOWN  &kp PAGE_UP  &kp LC(LA(END))
 &trans  &trans                &trans                &trans   &trans             &trans    &trans  &trans                      &trans         &trans       &trans
@@ -251,10 +274,10 @@
 
         DEFAULT_TABLET {
             bindings = <
-&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                      &kp Y      &kp U       &kp I            &kp O         &lt_hp 9 P
-&lt 3 A       &kp S        &kp D        &lt 11 F    &kp G                                      &kp H      &kp J       &kp K            &kp L         &lt 2 MINUS
-&hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LGUI V  &kp B                                      &kp N      &hm RGUI M  &hm RALT COMMA   &hm RCTRL DOT  &hm RSHFT SLASH
-&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &kp SPACE    &kp ENTER              &lt 3 LANG1      &kp LEFT      &kp RIGHT
+&lt 4 Q       &kp W        &kp E        &kp R       &kp T                                    &kp Y      &kp U       &kp I           &kp O          &lt_hp 9 P
+&lt 3 A       &kp S        &kp D        &lt 11 F    &kp G                                    &kp H      &kp J       &kp K           &kp L          &lt 2 MINUS
+&hm LSHFT Z   &hm LCTRL X  &hm LALT C   &hm LGUI V  &kp B                                    &kp N      &hm RGUI M  &hm RALT COMMA  &hm RCTRL DOT  &hm RSHFT SLASH
+&kp LEFT_WIN  &kp TAB      &lt 2 LANG2  &trans      &lt 5 DEL  &lt 2 BACKSPACE    &kp SPACE  &kp ENTER              &lt 3 LANG1     &kp LEFT       &kp RIGHT
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_UP SCRL_DOWN>;
@@ -264,10 +287,10 @@
 
         WIRELESS {
             bindings = <
-&ToMac        &ToWin        &ToTablet     &trans        &trans                               &ToMac        &ToWin        &ToTablet     &trans        &trans
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans        &trans        &trans        &trans        &trans                               &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans        &trans        &trans        &trans        &trans        &trans    &bootloader  &studio_unlock              &trans        &trans        &bt BT_CLR_ALL
+&ToMac        &ToWin        &ToTablet     &trans        &trans                               &ToMac          &ToWin        &ToTablet     &trans        &trans
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                         &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans        &trans        &trans        &trans        &trans                               &trans          &trans        &trans        &trans        &bt BT_CLR
+&trans        &trans        &trans        &trans        &trans        &trans    &bootloader  &studio_unlock                &trans        &trans        &bt BT_CLR_ALL
             >;
 
             sensor-bindings = <&inc_dec_kp RIGHT_ARROW LEFT_ARROW>;
