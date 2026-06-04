@@ -46,9 +46,13 @@
 };
 
 &msc_input_listener {
+    // 全レイヤーで1/4に減速
+    input-processors = <&zip_wheel_scaler 1 4>;
+
     speed_up {
         layers = <FUNCNUM>;
-        input-processors = <&zip_wheel_scaler 3 1>; //スクロールを3倍速にする
+        // FUNCNUMレイヤーでは1/4×3=3/4倍速
+        input-processors = <&zip_wheel_scaler 3 4>;
     };
 };
 
